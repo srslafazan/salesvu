@@ -11,8 +11,8 @@ const SalesVuAPISDK = require('salesvu')
 const sdk = new SalesVuAPISDK({
   dev: false, // (Boolean)
   apiKey: 'my_api_key', // (String)
-  storeId: 'my_store_id' // (String)
-)
+  storeId: 'my_store_id', // (String)
+})
 
 const about = await sdk.about()
 //  {
