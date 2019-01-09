@@ -18,6 +18,8 @@ const about = await sdk.about()
 //  }
 ```
 
+# Interfaces
+```node
 sdk interface .change_approval_type => SalesVu interface "change_approval_type"
 sdk interface .business_types => SalesVu interface "business_types"
 sdk interface .business => SalesVu interface "business"
@@ -46,6 +48,7 @@ sdk interface .complete_store_order => SalesVu interface "complete_store_order"
 sdk interface .get_mercury_account_info => SalesVu interface "get_mercury_account_info"
 sdk interface .create_products => SalesVu interface "create_products"
 sdk interface .sub_categories => SalesVu interface "sub_categories"
+```
 
 # License
 
