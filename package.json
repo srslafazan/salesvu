@@ -1,0 +1,17 @@
+{
+  "name": "salesvu",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Shain Lafazan",
+  "license": "MIT",
+  "scripts": {
+    "start": "yarn dev",
+    "dev": "source ./.env nodemon ./dev.js"
+  },
+  "dependencies": {
+    "axios": "^0.18.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.8"
+  }
+}
