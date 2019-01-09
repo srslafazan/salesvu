@@ -9,10 +9,10 @@ const salesVuPostObjectFromData = data => {
 }
 
 class SalesVuAPISDK {
-  constructor(subdomain, apiKey, storeId) {
-    this.subdomain = subdomain || process.env.SALESVU_API_SUBDOMAIN || 'www'
-    this.apiKey = apiKey || process.env.SALESVU_API_KEY
-    this.storeId = storeId  || process.env.SALESVU_STORE_ID
+  constructor({ dev, apiKey, storeId }) {
+    this.subdomain = dev ? 'dev' : 'www'
+    this.apiKey = apiKey
+    this.storeId = storeId
   }
 
   createSalesVuRequest(data) {
