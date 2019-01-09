@@ -6,7 +6,7 @@ A community JavaScript SDK for the SalesVu Point-of-Sale API
 # Getting Started
 
 ```node
-const SalesVuAPISDK = require('./index.js')
+const SalesVuAPISDK = require('salesvu')
 
 const sdk = new SalesVuAPISDK('dev', 'my_api_key', 'my_store_id')
 
