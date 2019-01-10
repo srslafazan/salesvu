@@ -1,9 +1,10 @@
 {
   "name": "salesvu",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "main": "index.js",
   "author": "Shain Lafazan",
   "license": "MIT",
+  "keywords": ["salesvu", "SalesVu", "sdk", "javascript", "node", "nodejs"],
   "scripts": {
     "start": "yarn dev",
     "dev": "source ./.env nodemon ./dev.js"
