@@ -14,7 +14,7 @@
     "dev": "source ./.env && nodemon ./dev.js"
   },
   "dependencies": {
-    "axios": "^0.18.0"
+    "axios": "^0.18.1"
   },
   "devDependencies": {
     "nodemon": "^1.18.8"
