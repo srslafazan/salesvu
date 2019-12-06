@@ -3,26 +3,35 @@
 A community JavaScript SDK for the SalesVu Point-of-Sale API
 
 
-# Getting Started
+## TL;DR
+
+```bash
+npm i --save salesvu
+```
+
+
+## Usage
 
 ```node
-const SalesVuAPISDK = require('salesvu')
+const SalesVu = require('salesvu')
 
-const sdk = new SalesVuAPISDK({
+const sdk = new SalesVu({
   dev: false, // (Boolean)
   apiKey: 'my_api_key', // (String)
   storeId: 'my_store_id', // (String)
 })
 
 const about = await sdk.about()
-//  {
-//   status: '...',
-//   statusText: '...', 
-//   data: { ... }, 
-//  }
+// response:
+// => {
+//      status: '...',
+//      statusText: '...',
+//      data: { ... },
+//    }
 ```
 
-# Interfaces
+
+## Interfaces
 ```node
 sdk interface .change_approval_type => SalesVu interface "change_approval_type"
 sdk interface .business_types => SalesVu interface "business_types"
@@ -54,6 +63,6 @@ sdk interface .create_products => SalesVu interface "create_products"
 sdk interface .sub_categories => SalesVu interface "sub_categories"
 ```
 
-# License
+## License
 
 MIT
