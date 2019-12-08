@@ -4,22 +4,62 @@
 
 const axios = require('axios')
 
-const salesVuPostObjectFromData = data => {
-  return `request=${JSON.stringify(data)}`
-}
 
 class SalesVuAPISDK {
   constructor({ dev, apiKey, storeId }) {
     this.subdomain = dev ? 'dev' : 'www'
     this.apiKey = apiKey
     this.storeId = storeId
+
+    this.methods = [
+      'change_approval_type',
+      'business_types',
+      'business',
+      'about',
+      'categories',
+      'product',
+      'modifiers',
+      'create_order',
+      'add_product',
+      'delete_order',
+      'delete_product',
+      'update_product_quantity',
+      'update_product_modifiers',
+      'get_order',
+      'complete_order',
+      'create_customer',
+      'assign_customer',
+      'get_card_info',
+      'process_payment',
+      'get_payment_url',
+      'add_order_note',
+      'init_payment',
+      'get_payment_devices',
+      'get_store_order',
+      'complete_store_order',
+      'get_mercury_account_info',
+      'create_products',
+      'sub_categories',
+    ]
+
+    methods.forEach(method => {
+      this[method] = data => this.createSalesVuRequest({ action: method, ...data })
+      this[method] = this[method].bind(this)
+    })
+
+    this.createSalesVuRequest = this.createSalesVuRequest.bind(this)
+
+  }
+
+  salesVuPostObjectFromData(data) {
+    return `request=${JSON.stringify(data)}`
   }
 
   createSalesVuRequest(data) {
     return axios({
       method: 'POST',
       url: `https://${this.subdomain}.salesvu.com/townvu/api/index.php`,
-      data: salesVuPostObjectFromData({
+      data: this.salesVuPostObjectFromData({
         api_key: this.apiKey,
         store_id: this.storeId,
         ...data,
@@ -27,117 +67,6 @@ class SalesVuAPISDK {
     })
   }
 
-  change_approval_type(data) {
-    return this.createSalesVuRequest({ action: 'change_approval_type', ...data })
-  }
-
-  business_types(data) {
-    return this.createSalesVuRequest({ action: 'business_types', ...data })
-  }
-
-  business(data) {
-    return this.createSalesVuRequest({ action: 'business', ...data })
-  }
-
-  about(data) {
-    return this.createSalesVuRequest({ action: 'about', ...data })
-  }
-
-  categories(data) {
-    return this.createSalesVuRequest({ action: 'categories', ...data })
-  }
-
-  product(data) {
-    return this.createSalesVuRequest({ action: 'product', ...data })
-  }
-
-  modifiers(data) {
-    return this.createSalesVuRequest({ action: 'modifiers', ...data })
-  }
-
-  create_order(data) {
-    return this.createSalesVuRequest({ action: 'create_order', ...data })
-  }
-
-  add_product(data) {
-    return this.createSalesVuRequest({ action: 'add_product', ...data })
-  }
-
-  delete_order(data) {
-    return this.createSalesVuRequest({ action: 'delete_order', ...data })
-  }
-
-  delete_product(data) {
-    return this.createSalesVuRequest({ action: 'delete_product', ...data })
-  }
-
-  update_product_quantity(data) {
-    return this.createSalesVuRequest({ action: 'update_product_quantity', ...data })
-  }
-
-  update_product_modifiers(data) {
-    return this.createSalesVuRequest({ action: 'update_product_modifiers', ...data })
-  }
-
-  get_order(data) {
-    return this.createSalesVuRequest({ action: 'get_order', ...data })
-  }
-
-  complete_order(data) {
-    return this.createSalesVuRequest({ action: 'complete_order', ...data })
-  }
-
-  create_customer(data) {
-    return this.createSalesVuRequest({ action: 'create_customer', ...data })
-  }
-
-  assign_customer(data) {
-    return this.createSalesVuRequest({ action: 'assign_customer', ...data })
-  }
-
-  get_card_info(data) {
-    return this.createSalesVuRequest({ action: 'get_card_info', ...data })
-  }
-
-  process_payment(data) {
-    return this.createSalesVuRequest({ action: 'process_payment', ...data })
-  }
-
-  get_payment_url(data) {
-    return this.createSalesVuRequest({ action: 'get_payment_url', ...data })
-  }
-
-  add_order_note(data) {
-    return this.createSalesVuRequest({ action: 'add_order_note', ...data })
-  }
-
-  init_payment(data) {
-    return this.createSalesVuRequest({ action: 'init_payment', ...data })
-  }
-
-  get_payment_devices(data) {
-    return this.createSalesVuRequest({ action: 'get_payment_devices', ...data })
-  }
-
-  get_store_order(data) {
-    return this.createSalesVuRequest({ action: 'get_store_order', ...data })
-  }
-
-  complete_store_order(data) {
-    return this.createSalesVuRequest({ action: 'complete_store_order', ...data })
-  }
-
-  get_mercury_account_info(data) {
-    return this.createSalesVuRequest({ action: 'get_mercury_account_info', ...data })
-  }
-
-  create_products(data) {
-    return this.createSalesVuRequest({ action: 'create_products', ...data })
-  }
-
-  sub_categories(data) {
-    return this.createSalesVuRequest({ action: 'sub_categories', ...data })
-  }
 }
 
 
